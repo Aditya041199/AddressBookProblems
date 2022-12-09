@@ -8,6 +8,7 @@ namespace AddressBook
 {
     internal class Addressbook
     {
+        List<Contact> data = new List<Contact>();
         public void CreateContact()
         {
             Contact contact = new Contact();
@@ -27,6 +28,23 @@ namespace AddressBook
             contact.PhoneNumber = Convert.ToInt64(Console.ReadLine());
             Console.WriteLine("Enter Email");
             contact.Email = Console.ReadLine();
+            data.Add(contact);
+        }
+        public void DisplayContact()
+        {
+            foreach(Contact records in data)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("*******Contact*******");
+                Console.WriteLine("Firstname" + records.Firstname);
+                Console.WriteLine("Lastname" + records.Lastname);
+                Console.WriteLine("Address" + records.Address);
+                Console.WriteLine("City" + records.City);
+                Console.WriteLine("State" + records.State);
+                Console.WriteLine("Zip" + records.Zip);
+                Console.WriteLine("PhoneNumber" + records.PhoneNumber);
+                Console.WriteLine("Email" + records.Email);
+            }
         }
     }
 }
