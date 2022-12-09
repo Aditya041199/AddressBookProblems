@@ -32,7 +32,7 @@ namespace AddressBook
         }
         public void DisplayContact()
         {
-            foreach(Contact records in data)
+            foreach (Contact records in data)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("*******Contact*******");
@@ -50,18 +50,18 @@ namespace AddressBook
         {
             Console.WriteLine("To edit contact enter contact firstname");
             string name = Console.ReadLine();
-            foreach(var record in data)
+            foreach (var record in data)
             {
-                if(record.Firstname == name)
+                if (record.Firstname == name)
                 {
-                    Console.ForegroundColor= ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(name + " is exists");
                     Console.ResetColor();
                     Console.WriteLine("To edit details Enter " +
                         "\n1.Lastname\n2.Address\n3.City\n4.State\n5." +
                         "Zip\n6.Phonenumber\n7.Email");
                     int choice = Convert.ToInt32(Console.ReadLine());
-                    switch(choice)
+                    switch (choice)
                     {
                         case 1:
                             Console.WriteLine("Enter new Lastname");
@@ -104,6 +104,28 @@ namespace AddressBook
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Name does not exists");
+                    Console.ResetColor();
+                }
+            }
+        }
+        public void DeleteContact()
+        {
+            Console.WriteLine("To Delete Contact From Address Book Enter FirstName Of Person");
+            string name = Console.ReadLine();
+            foreach (var record in data.ToList())
+            {
+                if (record.Firstname == name)
+                {
+                    data.Remove(record);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Person Details Deleted Succesfully");
+                    Console.ResetColor();
+
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Given Name Does Not Exist In Address Book");
                     Console.ResetColor();
                 }
             }
